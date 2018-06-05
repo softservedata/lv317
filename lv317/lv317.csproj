@@ -63,7 +63,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="SearchTest.cs" />
     <Compile Include="SeleniumFirst.cs" />
+    <Compile Include="Tools\TestRunner.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
