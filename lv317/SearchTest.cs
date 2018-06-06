@@ -37,6 +37,8 @@ namespace lv317
             IWebElement webDescription = driver.FindElement(By.XPath("//h4/a[text()='" + itemName + "']/../following-sibling::p[not(@*)]"));
             Assert.True(webDescription.Text.Contains(description));
             Thread.Sleep(2000);
+            //
+            isTestSuccess = true;
         }
     }
 
