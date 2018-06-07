@@ -63,6 +63,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="PromotionTest.cs" />
     <Compile Include="SearchTest.cs" />
     <Compile Include="SeleniumFirst.cs" />
     <Compile Include="SeleniumSecond.cs" />

@@ -17,7 +17,11 @@ namespace lv317.Tools
     public abstract class TestRunner
     {
         private readonly int IMPLICIT_WAIT = 10;
-        protected string urlUnderTest = "http://atqc-shop.epizy.com";
+        private string urlUnderTest = "http://atqc-shop.epizy.com";
+        public virtual string UrlUnderTest
+        {
+            get { return urlUnderTest; }
+        }
         protected IWebDriver driver;
         //
         protected bool isTestSuccess = false;
@@ -43,7 +47,7 @@ namespace lv317.Tools
         [SetUp]
         public void SetUp()
         {
-            driver.Navigate().GoToUrl(urlUnderTest);
+            driver.Navigate().GoToUrl(UrlUnderTest);
             isTestSuccess = false;
             Console.WriteLine("[SetUp] SetUp()");
         }

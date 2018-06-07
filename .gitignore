@@ -240,3 +240,9 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# bower
+/bower_components/
+
+# npm
+/node_modules/

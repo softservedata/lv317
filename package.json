@@ -1,0 +1,15 @@
+{
+  "name": "lv317",
+  "version": "1.0.0",
+  "description": "presentation",
+  "main": "./assets/index.js",
+  "author": "lv317",
+  "license": "ISC",
+  "scripts": {
+    "start": "node ./assets/index.js"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "path": "^0.12.7"
+  }
+}
