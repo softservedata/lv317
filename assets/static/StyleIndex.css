@@ -1,0 +1,67 @@
+#body
+{
+	flex-direction: row;	
+}
+
+.main 
+{
+	display: flex;
+    justify-content: center;
+	text-align: center;
+}
+
+#img
+{
+	display: flex;
+	width: 500px;
+}
+
+#q
+{
+	width: 400px;
+	height: 30px;
+
+	border-radius: 5px;
+	border-color: rgb(95, 186, 255);
+}
+
+#submit
+{
+	width: 60px;
+	height: 30px;
+
+	border-radius: 5px;
+	border:0 none;
+
+	color: white;
+
+	font-style: bold;
+
+	border-color: rgb(95, 186, 255);
+	background-color:rgb(95, 186, 255);
+}
+
+#submit:hover 
+{
+	border-color: rgb(98, 142, 182);
+    background-color:rgb(98, 142, 182);
+}
+
+#footer
+{
+	display: flex;
+    justify-content: center;
+	text-align: center;	
+}
+
+#footer span 
+{
+	width: 100%;
+  	height: 20px;
+
+  	font-size: 12px;
+
+	position: absolute;
+  	left: 0;
+  	bottom: 0;
+}
