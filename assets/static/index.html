@@ -1,12 +1,24 @@
 <html>
-    <head>
-        <title>ELOGGO Search</title>
-    </head>
-    <body>
-		<form action="/search">
-			<input type="text" id="q">
-			<input type="submit" id="submit">
-		</form>
-    </body>
+ <head>
+  <title>ELoggo</title>
+   <style type="text/css">
+    input{height: 40px; font-size: 18px; font-weight: bold;}
+    input[type="button"]{width: 100px;}
+   </style>
+ </head>
+ <body>
+  <div align="center">
+   <img src="mount.png" width="639" height="235" id="titlemount">
+   <br><br>
+   <img src="logo.png" width="334" height="97" id="logo">
+   <br><br>
+   <p align="center">ELoggo Web Connection</p>
+   <form action="/search">
+    <input type="text" id="q" name="q" size="80" aria-hidden="true" placeholder=" type search request">
+     &nbsp; &nbsp;
+    <input type="submit" id="submit" name="submit" value="Search">
+   </form>
+   <p>&nbsp;</p>
+  </div> 
+ </body>
 </html>
-

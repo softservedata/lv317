@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Threading;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 //using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -19,7 +21,7 @@ namespace lv317
         // DataProvider
         private static readonly object[] Items =
         {
-            new object[] { "iPhone", "iPhone is a revolutionary new mobile phone that allows you to make a call by simply tapping" },
+            //new object[] { "iPhone", "iPhone is a revolutionary new mobile phone that allows you to make a call by simply tapping" },
             new object[] { "Apple iPhone SE 64GB", "IPS, 1136x640) / Apple A9 /" }
         };
 
@@ -35,8 +37,16 @@ namespace lv317
             Thread.Sleep(1000);
             //
             IWebElement webDescription = driver.FindElement(By.XPath("//h4/a[text()='" + itemName + "']/../following-sibling::p[not(@*)]"));
+            // MoveToElement
+            Actions action = new Actions(driver);
+            action.MoveToElement(webDescription).Perform();
+            //IJavaScriptExecutor javaScriptExecutor = (IJavaScriptExecutor)driver;
+            //javaScriptExecutor.ExecuteScript("arguments[0].scrollIntoView(true);", webDescription);
+            //
             Assert.True(webDescription.Text.Contains(description));
             Thread.Sleep(2000);
+            //
+            MessageBox.Show("Congratulation! Item " + itemName + "Found. \nDescription: " + description, "info " + itemName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             //
             isTestSuccess = true;
         }

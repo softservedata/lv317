@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium;
-//using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
@@ -22,6 +22,11 @@ namespace lv317.Tools
         {
             get { return urlUnderTest; }
         }
+        public virtual IWebDriver DefaultDriver
+        {
+            get { return InitChromeWhithUIMaximized(); }
+        }
+
         protected IWebDriver driver;
         //
         protected bool isTestSuccess = false;
@@ -29,7 +34,8 @@ namespace lv317.Tools
         [OneTimeSetUp]
         public void BeforeAllMethods()
         {
-            driver = new ChromeDriver();
+            //driver = new ChromeDriver();
+            driver = DefaultDriver;
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(IMPLICIT_WAIT);
             //
             Console.WriteLine("[OneTimeSetUp] BeforeAllMethods()");
@@ -62,6 +68,44 @@ namespace lv317.Tools
                 SaveSourceCode();
             }
             Console.WriteLine("[TearDown] TearDown()");
+        }
+
+        protected IWebDriver InitChromeWhithUI()
+        {
+            return new ChromeDriver();
+        }
+
+        protected IWebDriver InitChromeWhithUIMaximized()
+        {
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("--start-maximized");
+            options.AddArguments("--no-proxy-server");
+            //options.AddArguments("--no-sandbox");
+            //options.AddArguments("--disable-web-security");
+            options.AddArguments("--ignore-certificate-errors");
+            //options.AddArguments("--disable-extensions");
+            //options.AddArguments("--headless");
+            //options.BinaryLocation = @"C:\...\ChromiumPortable.exe";
+            return new ChromeDriver(options);
+        }
+
+        protected IWebDriver InitChromeWhithoutUI()
+        {
+            ChromeOptions options = new ChromeOptions();
+            //options.AddArguments("--start-maximized");
+            options.AddArguments("--no-proxy-server");
+            //options.AddArguments("--no-sandbox");
+            //options.AddArguments("--disable-web-security");
+            options.AddArguments("--ignore-certificate-errors");
+            //options.AddArguments("--disable-extensions");
+            options.AddArguments("--headless");
+            //options.BinaryLocation = @"C:\...\ChromiumPortable.exe";
+            return new ChromeDriver(options);
+        }
+
+        protected IWebDriver InitFirefoxWhithUI()
+        {
+            return new FirefoxDriver();
         }
 
         private string GetTime()
