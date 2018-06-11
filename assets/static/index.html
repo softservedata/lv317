@@ -1,24 +1,34 @@
 <html>
- <head>
-  <title>ELoggo</title>
-   <style type="text/css">
-    input{height: 40px; font-size: 18px; font-weight: bold;}
-    input[type="button"]{width: 100px;}
-   </style>
- </head>
- <body>
-  <div align="center">
-   <img src="mount.png" width="639" height="235" id="titlemount">
-   <br><br>
-   <img src="logo.png" width="334" height="97" id="logo">
-   <br><br>
-   <p align="center">ELoggo Web Connection</p>
-   <form action="/search">
-    <input type="text" id="q" name="q" size="80" aria-hidden="true" placeholder=" type search request">
-     &nbsp; &nbsp;
-    <input type="submit" id="submit" name="submit" value="Search">
-   </form>
-   <p>&nbsp;</p>
-  </div> 
- </body>
+   
+    <head>
+        <title>ELOGGO Search</title>
+        <link rel="shortcut icon" type="image/x-icon" href="images/smallLogo.png">
+        <link rel="stylesheet" type="text/css" href="StyleIndex.css">
+    </head>
+   
+    <body id="body">
+    	<div class="main">
+
+    		<form class="form" action="/search">
+
+    			<img id="img" src="images/logo.png" alt="logoELOGGO">
+				<p align ="center"> Eloggo Web Connection</p>
+				
+				<input type="text" id="q" name = "q" placeholder="   type search request"></input> 
+				
+				<input type="submit" id="submit" name = "submit" value="Search"></input>
+				
+			</form>
+    	</div>
+    </body>
+
+    <footer id="footer">
+    	<div class="team">
+
+			<span>NATqc &copy; 2018 </span>
+
+		</div>
+    </footer>
+
 </html>
+
