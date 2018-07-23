@@ -15,7 +15,7 @@ namespace lv317
     public class Item
     {
         public string Name { get; private set; }
-        public Item (string name )
+        public Item(string name)
         {
             this.Name = name;
         }
@@ -33,9 +33,9 @@ namespace lv317
         {
             new object[] {wishItems}
         };
-    [Test, TestCaseSource(nameof(AddWishItems))]
 
-    public void AddToWishList(List<Item> wishItems)
+        [Test, TestCaseSource(nameof(AddWishItems))]
+        public void AddToWishList(List<Item> wishItems)
         {
             driver.FindElement(By.ClassName("dropdown")).Click();
             Thread.Sleep(3000);
@@ -51,7 +51,7 @@ namespace lv317
                 IWebElement searchField = driver.FindElement(By.CssSelector(".form-control.input-lg"));
                 searchField.Click();
                 searchField.Clear();
-              
+
                 searchField.SendKeys(iwish.Name);
                 Thread.Sleep(1000);
 
@@ -74,7 +74,7 @@ namespace lv317
         }
 
 
-}
+    }
 
 }
 

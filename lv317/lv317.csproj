@@ -65,10 +65,12 @@
   </Choose>
   <ItemGroup>
     <Compile Include="OrderTest.cs" />
+    <Compile Include="Pages\Users\AHeadComponent.cs" />
     <Compile Include="PromotionTest.cs" />
     <Compile Include="SearchTest.cs" />
     <Compile Include="SeleniumFirst.cs" />
     <Compile Include="SeleniumSecond.cs" />
+    <Compile Include="Tools\RegexUtils.cs" />
     <Compile Include="Tools\TestRunner.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
