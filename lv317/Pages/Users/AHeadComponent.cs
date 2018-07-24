@@ -157,6 +157,8 @@ namespace lv317.Pages.Users
         public const string FIRST_ANCHOR_CSS = "a:first-child";
         public const string MENUTOP_OPTIONS_XPATH = "//li/a[contains(text(),'{0}')]/..//li/a";
         public const string MENUTOP_LAST_OPTION_XPATH = "//a[contains(text(),'Show All {0}')]";
+        public const string CURRENCY_SELECT_CSS = "button.currency-select.btn.btn-link.btn-block";
+
         //
         //protected ISearch Search { get; private set; }
         protected IWebDriver driver;
@@ -328,103 +330,114 @@ namespace lv317.Pages.Users
         }
 
         // MenuTop
-        //public IWebElement GetMenuTopByCategoryPartialName(string categoryName)
-        //{
-        //    IWebElement result = null;
-        //    foreach (IWebElement current in MenuTop)
-        //    {
-        //        //if (Search.CssSelector(FIRST_ANCHOR_CSS, current)
-        //        if (driver.FindElement(By.CssSelector(FIRST_ANCHOR_CSS, current))
-        //                .Text.ToLower().Contains(categoryName.ToLower()))
-        //        {
-        //            result = current;
-        //            break;
-        //        }
-        //    }
-        //    return result;
-        //}
+        public IWebElement GetMenuTopByCategoryPartialName(string categoryName)
+        {
+            IWebElement result = null;
+            foreach (IWebElement current in MenuTop)
+            {
+                //if (Search.CssSelector(FIRST_ANCHOR_CSS, current)
+                if (current.FindElement(By.CssSelector(FIRST_ANCHOR_CSS))
+                        .Text.ToLower().Contains(categoryName.ToLower()))
+                {
+                    result = current;
+                    break;
+                }
+            }
+            return result;
+        }
 
-        //public List<string> GetMenuTopTexts()
-        //{
-        //    List<string> result = new List<string>();
-        //    foreach (IWebElement current in MenuTop)
-        //    {
-        //        result.Add(Search.CssSelector("a:first-child", current).Text);
-        //    }
-        //    return result;
-        //}
+        public List<string> GetMenuTopTexts()
+        {
+            List<string> result = new List<string>();
+            foreach (IWebElement current in MenuTop)
+            {
+                //result.Add(Search.CssSelector(FIRST_ANCHOR_CSS, current).Text);
+                result.Add(current.FindElement(By.CssSelector(FIRST_ANCHOR_CSS)).Text);
+            }
+            return result;
+        }
 
-        //public void ClickMenuTopByCategoryPartialName(string categoryName)
-        //{
-        //    bool isClickable = false;
-        //    foreach (string current in GetMenuTopTexts())
-        //    {
-        //        if (current.ToLower().Contains(categoryName.ToLower()))
-        //        {
-        //            isClickable = true;
-        //        }
-        //    }
-        //    if (!isClickable)
-        //    {
-        //        // TODO Develop Custom Exceptions
-        //        throw new Exception("Menu Element not Found");
-        //    }
-        //    GetMenuTopByCategoryPartialName(categoryName).Click();
-        //}
+        public bool isExistMenuTopByCategoryPartialName(string categoryName)
+        {
+            bool isExist = false;
+            foreach (string current in GetMenuTopTexts())
+            {
+                if (current.ToLower().Contains(categoryName.ToLower()))
+                {
+                    isExist = true;
+                }
+            }
+            if (!isExist)
+            {
+                // TODO Develop Custom Exceptions
+                throw new Exception("Menu Element not Found");
+            }
+            return isExist;
+        }
+
+
+        public void ClickMenuTopByCategoryPartialName(string categoryName)
+        {
+            if (isExistMenuTopByCategoryPartialName(categoryName))
+            {
+                GetMenuTopByCategoryPartialName(categoryName).Click();
+            }
+        }
 
         // DropdownOptions
-        //private void CreateDropdownOptions(By searchLocator, By lastLocator)
-        //{
-        //    if (lastLocator == null)
-        //    {
-        //        dropdownOptions = new DropdownOptions(searchLocator);
-        //    }
-        //    else
-        //    {
-        //        dropdownOptions = new DropdownOptions(searchLocator, lastLocator);
-        //    }
-        //}
+        private void CreateDropdownOptions(By searchLocator, By lastLocator)
+        {
+            if (lastLocator == null)
+            {
+                dropdownOptions = new DropdownOptions(driver, searchLocator);
+            }
+            else
+            {
+                dropdownOptions = new DropdownOptions(driver, searchLocator, lastLocator);
+            }
+        }
 
-        //private void ClickDropdownOptionByPartialName(string optionName, By searchLocator, By lastLocator)
-        //{
-        //    bool isClickable = false;
-        //    CreateDropdownOptions(searchLocator, lastLocator);
-        //    foreach (string current in dropdownOptions.GetListOptions())
-        //    {
-        //        if (current.ToLower().Contains(optionName.ToLower()))
-        //        {
-        //            isClickable = true;
-        //        }
-        //    }
-        //    if (!isClickable)
-        //    {
-        //        // TODO Develop Custom Exceptions
-        //        throw new Exception("SubMenu Element " + optionName + " not Found");
-        //    }
-        //    dropdownOptions.ClickDropdownOptionByPartialName(optionName);
-        //}
+        private void ClickDropdownOptionByPartialName(string optionName, By searchLocator, By lastLocator)
+        {
+            bool isClickable = false;
+            CreateDropdownOptions(searchLocator, lastLocator);
+            foreach (string current in dropdownOptions.GetListOptions())
+            {
+                if (current.ToLower().Contains(optionName.ToLower()))
+                {
+                    isClickable = true;
+                }
+            }
+            if (!isClickable)
+            {
+                // TODO Develop Custom Exceptions
+                throw new Exception("SubMenu Element " + optionName + " not Found");
+            }
+            dropdownOptions.ClickDropdownOptionByPartialName(optionName);
+        }
 
-        //public List<string> GetSubMenuTopByPartialName(string categoryName)
-        //{
-        //    ClickMenuTopByCategoryPartialName(categoryName);
-        //    dropdownOptions = new DropdownOptions(By.XPath(String.Format(MENUTOP_OPTIONS_XPATH, categoryName)));
-        //    return dropdownOptions.GetListOptions();
-        //}
+        public List<string> GetSubMenuTopByPartialName(string categoryName)
+        {
+            ClickMenuTopByCategoryPartialName(categoryName);
+            dropdownOptions = new DropdownOptions(driver,
+                    By.XPath(String.Format(MENUTOP_OPTIONS_XPATH, categoryName)));
+            return dropdownOptions.GetListOptions();
+        }
 
-        //public void ClickSubMenuTopByPartialName(string categoryName, string optionName)
-        //{
-        //    ClickMenuTopByCategoryPartialName(categoryName);
-        //    ClickDropdownOptionByPartialName(optionName,
-        //            By.XPath(String.Format(MENUTOP_OPTIONS_XPATH, categoryName)),
-        //            By.XPath(String.Format(MENUTOP_LAST_OPTION_XPATH, categoryName)));
-        //}
+        public void ClickSubMenuTopByPartialName(string categoryName, string optionName)
+        {
+            ClickMenuTopByCategoryPartialName(categoryName);
+            ClickDropdownOptionByPartialName(optionName,
+                    By.XPath(String.Format(MENUTOP_OPTIONS_XPATH, categoryName)),
+                    By.XPath(String.Format(MENUTOP_LAST_OPTION_XPATH, categoryName)));
+        }
 
         // CurrencyOptions
         private void InitcurrencyOptions()
         {
             ClickSearchProductField();
             ClickCurrency();
-            currencyOptions = new DropdownOptions(driver, By.CssSelector("button.currency-select.btn.btn-link.btn-block"));
+            currencyOptions = new DropdownOptions(driver, By.CssSelector(CURRENCY_SELECT_CSS));
         }
 
         public IWebElement GetCurrencyByPartialName(string currencyName)
@@ -446,62 +459,6 @@ namespace lv317.Pages.Users
         }
 
 
-        ++++++++++++++++++++++++++++++++
-
-        // ProductComponents
-        protected ProductComponent GetProductComponentByProductName(string productName)
-        {
-            //Console.WriteLine("ProductComponents.Count = " + ProductComponents.Count + "  productName = " + productName);
-            ProductComponent result = null;
-            foreach (ProductComponent current in ProductComponents)
-            {
-                //Console.WriteLine("current = " + current.Name + "  productName = " + productName);
-                if (current.GetNameText().ToLower().Contains(productName.ToLower()))
-                {
-                    //Console.WriteLine("FOUND: ProductComponent current = " + current.Name);
-                    result = current;
-                    break;
-                }
-            }
-            if (result == null)
-            {
-                // TODO Develop Custom Exceptions
-                throw new Exception("ProductComponent " + productName + " not Found");
-            }
-            return result;
-        }
-
-        protected List<String> GetProductComponentTexts()
-        {
-            List<string> result = new List<string>();
-            foreach (ProductComponent current in ProductComponents)
-            {
-                result.Add(current.GetNameText());
-            }
-            return result;
-        }
-
-        protected string GetPriceTextByProductName(string productName)
-        {
-            return GetProductComponentByProductName(productName).GetPriceText();
-        }
-
-        protected double GetPriceAmountByProductName(string productName)
-        {
-            //Console.WriteLine("public new double GetPriceAmountByProductName(string productName) productName = " + productName);
-            return GetProductComponentByProductName(productName).GetPriceAmount();
-        }
-
-        protected void ClickAddToCartByProductName(string productName)
-        {
-            GetProductComponentByProductName(productName).ClickAddToCart();
-        }
-
-        protected void ClickAddToWishByProductName(string productName)
-        {
-            GetProductComponentByProductName(productName).ClickAddToWish();
-        }
-
         // Business Logic
         public void GotoHome()
         {
@@ -521,12 +478,14 @@ namespace lv317.Pages.Users
             ClickSearchProductField();
             ClickMyAccount();
             //
-            MyAccountOption = new MyAccountOptions();
+            MyAccountOption = new MyAccountOptions(driver);
             MyAccountOption.ClickRegister();
         }
 
+        // TODO
         public void GotoLogin()
         {
+            // TODO +++
             if (MyAccountOptions.IsLoggedin)
             {
                 throw new Exception("You Must be Logout");
@@ -534,20 +493,25 @@ namespace lv317.Pages.Users
             ClickSearchProductField();
             ClickMyAccount();
             //
-            MyAccountOption = new MyAccountOptions();
+            MyAccountOption = new MyAccountOptions(driver);
+            // if MyAccountOptions.isLogined()
             MyAccountOption.ClickLogin();
+            // TODO Modify +++
             MyAccountOptions.IsLoggedin = true;
         }
 
+        // TODO
         public void GotoMyAccount()
         {
             ClickSearchProductField();
             ClickMyAccount();
             //
-            MyAccountOption = new MyAccountOptions();
+            MyAccountOption = new MyAccountOptions(driver);
+            // if MyAccountOptions.isLogined()
             MyAccountOption.ClickMyAccount();
         }
 
+        // TODO
         public void GotoLogout()
         {
             if (!MyAccountOptions.IsLoggedin)
@@ -557,7 +521,8 @@ namespace lv317.Pages.Users
             ClickSearchProductField();
             ClickMyAccount();
             //
-            MyAccountOption = new MyAccountOptions();
+            MyAccountOption = new MyAccountOptions(driver);
+            // if MyAccountOptions.isLogined()
             MyAccountOption.ClickLogout();
             MyAccountOptions.IsLoggedin = false;
         }

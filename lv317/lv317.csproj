@@ -66,12 +66,19 @@
   <ItemGroup>
     <Compile Include="OrderTest.cs" />
     <Compile Include="Pages\Users\AHeadComponent.cs" />
+    <Compile Include="Pages\Users\AHeadProduct.cs" />
+    <Compile Include="Pages\Users\ALeftComponent.cs" />
+    <Compile Include="Pages\Users\ANavigatePanelComponent.cs" />
+    <Compile Include="Pages\Users\ARightComponent.cs" />
+    <Compile Include="Pages\Users\HomePage.cs" />
+    <Compile Include="Pages\Users\ProductComponent.cs" />
+    <Compile Include="Pages\Users\SuccesSearchPage.cs" />
     <Compile Include="PromotionTest.cs" />
     <Compile Include="SearchTest.cs" />
     <Compile Include="SeleniumFirst.cs" />
     <Compile Include="SeleniumSecond.cs" />
     <Compile Include="Tools\RegexUtils.cs" />
-    <Compile Include="Tools\TestRunner.cs" />
+    <Compile Include="Pages\TestRunner.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WishWsh.cs" />

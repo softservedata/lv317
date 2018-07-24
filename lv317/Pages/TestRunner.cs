@@ -10,8 +10,9 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using lv317.Pages.Users;
 
-namespace lv317.Tools
+namespace lv317.Pages
 {
     [TestFixture]
     public abstract class TestRunner
@@ -68,6 +69,11 @@ namespace lv317.Tools
                 SaveSourceCode();
             }
             Console.WriteLine("[TearDown] TearDown()");
+        }
+
+        public HomePage GotoHomePage()
+        {
+            return new HomePage(driver);
         }
 
         protected IWebDriver InitChromeWhithUI()

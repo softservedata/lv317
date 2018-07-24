@@ -9,6 +9,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
+using lv317.Pages;
 
 namespace lv317
 {

@@ -12,6 +12,8 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using lv317.Tools;
+using lv317.Pages;
+using lv317.Pages.Users;
 
 namespace lv317
 {
@@ -25,8 +27,8 @@ namespace lv317
             new object[] { "Apple iPhone SE 64GB", "IPS, 1136x640) / Apple A9 /" }
         };
 
-        [Test, TestCaseSource(nameof(Items))]
-        public void SearchItem(string itemName, string description)
+        //[Test, TestCaseSource(nameof(Items))]
+        public void SearchItem0(string itemName, string description)
         {
             driver.FindElement(By.Name("search")).Click();
             driver.FindElement(By.Name("search")).Clear();
@@ -50,6 +52,25 @@ namespace lv317
             //
             isTestSuccess = true;
         }
+
+        [Test, TestCaseSource(nameof(Items))]
+        public void SearchItem1(string itemName, string description)
+        {
+            // Steps
+            SuccesSearchPage succesSearchPage = GotoHomePage()
+                    .SuccesSearchProduct(itemName);
+            // Check
+            Assert.True(succesSearchPage
+                    .GetProductDescriptionByProductName(itemName)
+                    .Contains(description));
+            //
+            MessageBox.Show("Web Description: " + succesSearchPage.GetProductDescriptionByProductName(itemName),
+                "info " + itemName,
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //
+            isTestSuccess = true;
+        }
+
     }
 
 }
