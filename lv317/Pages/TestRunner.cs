@@ -19,6 +19,8 @@ namespace lv317.Pages
     {
         private readonly int IMPLICIT_WAIT = 10;
         private string urlUnderTest = "http://atqc-shop.epizy.com";
+        //
+        protected readonly double DOUBLE_PRECISE = 0.01;
         public virtual string UrlUnderTest
         {
             get { return urlUnderTest; }

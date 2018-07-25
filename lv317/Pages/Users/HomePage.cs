@@ -11,9 +11,20 @@ namespace lv317.Pages.Users
 {
     public class HomePage : AHeadProduct
     {
+        public const string EXPECTED_ALT_IMAGE = "iPhone 6";
+        //
+        public IWebElement BannerIPhone
+            { get { return driver.FindElement(By.XPath("//img[contains(@src,'banners/iPhone6')]")); } }
+
         public HomePage(IWebDriver driver) : base(driver)
         {
             InitProductComponents(By.CssSelector(PRODUCT_BASE_ELEMENT_CSS));
+        }
+
+        //BannerIPhone
+        public string GetAlternativeText()
+        {
+            return BannerIPhone.GetAttribute(TAG_ATTRIBUTE_ALT);
         }
 
         // ProductComponents
@@ -48,6 +59,12 @@ namespace lv317.Pages.Users
         }
 
         // Business Logic
+        public HomePage ChooseCurrencyByPartialName(string currencyName)
+        {
+            ClickCurrencyByPartialName(currencyName);
+            return new HomePage(driver);
+        }
+
         public new SuccesSearchPage SuccesSearchProduct(string partialProductName)
         {
             base.SuccesSearchProduct(partialProductName);

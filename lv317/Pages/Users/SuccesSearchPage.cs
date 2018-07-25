@@ -49,6 +49,18 @@ namespace lv317.Pages.Users
             base.ClickAddToWishByProductName(productName);
         }
 
+        // Business Logic
+        public SuccesSearchPage ChooseCurrencyByPartialName(string currencyName)
+        {
+            ClickCurrencyByPartialName(currencyName);
+            return new SuccesSearchPage(driver);
+        }
+
+        public HomePage GotoHomePage()
+        {
+            ClickLogo();
+            return new HomePage(driver);
+        }
     }
 
 }

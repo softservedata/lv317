@@ -38,7 +38,8 @@ namespace lv317.Pages.Users
             foreach (ProductComponent current in ProductComponents)
             {
                 //Console.WriteLine("current = " + current.Name + "  productName = " + productName);
-                if (current.GetNameText().ToLower().Contains(productName.ToLower()))
+                //if (current.GetNameText().ToLower().Contains(productName.ToLower()))
+                if (current.GetNameText().ToLower().Equals(productName.ToLower()))
                 {
                     //Console.WriteLine("FOUND: ProductComponent current = " + current.Name);
                     result = current;

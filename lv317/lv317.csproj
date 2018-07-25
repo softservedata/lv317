@@ -64,6 +64,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CurrencyTest.cs" />
+    <Compile Include="Data\ApplicationSource.cs" />
+    <Compile Include="Data\Commons\CurrencyRepository.cs" />
+    <Compile Include="Data\Products\Product.cs" />
+    <Compile Include="Data\Products\ProductRepository.cs" />
+    <Compile Include="Data\Users\User.cs" />
+    <Compile Include="Data\Users\UserRepository.cs" />
     <Compile Include="OrderTest.cs" />
     <Compile Include="Pages\Users\AHeadComponent.cs" />
     <Compile Include="Pages\Users\AHeadProduct.cs" />
@@ -86,6 +93,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

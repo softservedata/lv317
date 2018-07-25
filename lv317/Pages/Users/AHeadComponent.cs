@@ -154,6 +154,7 @@ namespace lv317.Pages.Users
     {
         public const string TAG_ATTRIBUTE_VALUE = "value";
         public const string TAG_ATTRIBUTE_HREF = "href";
+        public const string TAG_ATTRIBUTE_ALT = "alt";
         public const string FIRST_ANCHOR_CSS = "a:first-child";
         public const string MENUTOP_OPTIONS_XPATH = "//li/a[contains(text(),'{0}')]/..//li/a";
         public const string MENUTOP_LAST_OPTION_XPATH = "//a[contains(text(),'Show All {0}')]";

@@ -14,6 +14,7 @@ using OpenQA.Selenium.Support.UI;
 using lv317.Tools;
 using lv317.Pages;
 using lv317.Pages.Users;
+using lv317.Data.Products;
 
 namespace lv317
 {
@@ -53,19 +54,28 @@ namespace lv317
             isTestSuccess = true;
         }
 
-        [Test, TestCaseSource(nameof(Items))]
-        public void SearchItem1(string itemName, string description)
+        // DataProvider
+        private static readonly object[] ProductItems =
+        {
+            new object[] { ProductRepository.AppleIPhone() },
+            new object[] { ProductRepository.MacBook() },
+            new object[] { ProductRepository.MacBookAir() }
+        };
+
+        [Test, TestCaseSource(nameof(ProductItems))]
+        public void SearchItem1(Product product)
+        //public void SearchItem1(string itemName, string description)
         {
             // Steps
             SuccesSearchPage succesSearchPage = GotoHomePage()
-                    .SuccesSearchProduct(itemName);
+                    .SuccesSearchProduct(product.Name);
             // Check
             Assert.True(succesSearchPage
-                    .GetProductDescriptionByProductName(itemName)
-                    .Contains(description));
+                    .GetProductDescriptionByProductName(product.Name)
+                    .Contains(product.Description));
             //
-            MessageBox.Show("Web Description: " + succesSearchPage.GetProductDescriptionByProductName(itemName),
-                "info " + itemName,
+            MessageBox.Show("Web Description: " + succesSearchPage.GetProductDescriptionByProductName(product.Name),
+                "info " + product.Name,
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             //
             isTestSuccess = true;

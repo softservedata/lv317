@@ -12,6 +12,9 @@ namespace lv317.Tools
     {
         public static double DoubleParseCulture(string text)
         {
+            // Delete all commaes
+            text = text.Replace(",", "");
+            //
             // I18N
             //return Convert.ToDouble(text.Replace('.', ','));
             //return Double.Parse(text, NumberStyles.AllowDecimalPoint);
@@ -58,7 +61,8 @@ namespace lv317.Tools
         public static List<double> ExtractDoubles(string text)
         {
             List<double> result = new List<double>();
-            MatchCollection collectionNumbers = ExtractMatchCollection(@"\d+\.\d+", text);
+            //MatchCollection collectionNumbers = ExtractMatchCollection(@"\d+\.\d+", text);
+            MatchCollection collectionNumbers = ExtractMatchCollection(@"(\d{1,3},)*\d{1,3}\.\d+", text);
             if (collectionNumbers.Count == 0)
             {
                 // TODO Develop Custom Exception
