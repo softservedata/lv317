@@ -30,23 +30,23 @@ namespace lv317
         };
 
         //[Test, TestCaseSource(nameof(CurrencyData))]
-        public void CheckChangeCurrency0(string currencyName, string itemName, string expectedPrice)
-        {
-            driver.FindElement(By.CssSelector(".btn.btn-link.dropdown-toggle")).Click();
-            driver.FindElement(By.Name(currencyName)).Click();
-            IWebElement actualPrice = driver.FindElement(By.XPath("//a[text()='"
-                + itemName + "']/../../p[@class='price']"));
-            Console.WriteLine("actual string: " + actualPrice.Text.Trim());
-            Assert.True(actualPrice.Text.Trim().Contains(expectedPrice));
-            Console.WriteLine("CheckChangeCurrency done, currency = " + currencyName);
-            Thread.Sleep(1000);
-        }
+        //public void CheckChangeCurrency0(string currencyName, string itemName, string expectedPrice)
+        //{
+        //    driver.FindElement(By.CssSelector(".btn.btn-link.dropdown-toggle")).Click();
+        //    driver.FindElement(By.Name(currencyName)).Click();
+        //    IWebElement actualPrice = driver.FindElement(By.XPath("//a[text()='"
+        //        + itemName + "']/../../p[@class='price']"));
+        //    Console.WriteLine("actual string: " + actualPrice.Text.Trim());
+        //    Assert.True(actualPrice.Text.Trim().Contains(expectedPrice));
+        //    Console.WriteLine("CheckChangeCurrency done, currency = " + currencyName);
+        //    Thread.Sleep(1000);
+        //}
 
         // DataProvider
         private static readonly object[] CurrencyProducts =
         {
-            new object[] { CurrencyRepository.Euro(), ProductRepository.MacBook() },
-            new object[] { CurrencyRepository.PoundSterling(), ProductRepository.MacBook() },
+            //new object[] { CurrencyRepository.Euro(), ProductRepository.MacBook() },
+            //new object[] { CurrencyRepository.PoundSterling(), ProductRepository.MacBook() },
             new object[] { CurrencyRepository.USDollar(), ProductRepository.MacBook() },
         };
 
@@ -54,7 +54,7 @@ namespace lv317
         public void CheckChangeCurrency1(string currencyText, Product product)
         {
             // Steps
-            SuccesSearchPage succesSearchPage = GotoHomePage()
+            SuccesSearchPage succesSearchPage = Pages.Application.Get().LoadHomePage()
                     .SuccesSearchProduct(product.Name)
                     .ChooseCurrencyByPartialName(currencyText);
             // Check

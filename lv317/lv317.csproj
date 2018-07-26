@@ -66,12 +66,15 @@
   <ItemGroup>
     <Compile Include="CurrencyTest.cs" />
     <Compile Include="Data\ApplicationSource.cs" />
+    <Compile Include="Data\ApplicationSourceRepository.cs" />
     <Compile Include="Data\Commons\CurrencyRepository.cs" />
     <Compile Include="Data\Products\Product.cs" />
     <Compile Include="Data\Products\ProductRepository.cs" />
     <Compile Include="Data\Users\User.cs" />
     <Compile Include="Data\Users\UserRepository.cs" />
     <Compile Include="OrderTest.cs" />
+    <Compile Include="Pages\Application.cs" />
+    <Compile Include="Pages\TestRunnerFirst.cs" />
     <Compile Include="Pages\Users\AHeadComponent.cs" />
     <Compile Include="Pages\Users\AHeadProduct.cs" />
     <Compile Include="Pages\Users\ALeftComponent.cs" />
@@ -84,6 +87,7 @@
     <Compile Include="SearchTest.cs" />
     <Compile Include="SeleniumFirst.cs" />
     <Compile Include="SeleniumSecond.cs" />
+    <Compile Include="Tools\BrowserWrapper.cs" />
     <Compile Include="Tools\RegexUtils.cs" />
     <Compile Include="Pages\TestRunner.cs" />
     <Compile Include="UnitTest1.cs" />

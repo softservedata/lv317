@@ -16,7 +16,7 @@ using lv317.Pages;
 namespace lv317
 {
     [TestFixture]
-    public class PromotionTest : TestRunner
+    public class PromotionTest : TestRunnerFirst
     {
         public override string UrlUnderTest
         {

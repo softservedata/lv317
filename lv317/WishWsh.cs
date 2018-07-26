@@ -22,7 +22,7 @@ namespace lv317
         }
     }
     [TestFixture]
-    public class WishWish : TestRunner
+    public class WishWish : TestRunnerFirst
     {
         private static List<Item> wishItems = new List<Item>();
         public WishWish()

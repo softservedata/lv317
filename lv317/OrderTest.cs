@@ -29,7 +29,7 @@ namespace lv317
     }
 
     [TestFixture]
-    public class OrderTest : TestRunner
+    public class OrderTest : TestRunnerFirst
     {
         private static List<Order> orders = new List<Order>();
 
