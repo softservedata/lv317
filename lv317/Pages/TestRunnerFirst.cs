@@ -75,7 +75,8 @@ namespace lv317.Pages
 
         public HomePage GotoHomePage()
         {
-            return new HomePage(driver);
+            //return new HomePage(driver);
+            return new HomePage();
         }
 
         protected IWebDriver InitChromeWhithUI()

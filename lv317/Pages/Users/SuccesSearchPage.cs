@@ -13,7 +13,8 @@ namespace lv317.Pages.Users
     {
         // TODO Add Search Criteria
 
-        public SuccesSearchPage(IWebDriver driver) : base(driver)
+        //public SuccesSearchPage(IWebDriver driver) : base(driver)
+        public SuccesSearchPage() : base()
         {
             InitProductComponents(By.CssSelector(PRODUCT_BASE_ELEMENT_CSS));
         }
@@ -53,13 +54,15 @@ namespace lv317.Pages.Users
         public SuccesSearchPage ChooseCurrencyByPartialName(string currencyName)
         {
             ClickCurrencyByPartialName(currencyName);
-            return new SuccesSearchPage(driver);
+            //return new SuccesSearchPage(driver);
+            return new SuccesSearchPage();
         }
 
         public HomePage GotoHomePage()
         {
             ClickLogo();
-            return new HomePage(driver);
+            //return new HomePage(driver);
+            return new HomePage();
         }
     }
 

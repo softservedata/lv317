@@ -14,9 +14,10 @@ namespace lv317.Pages.Users
         public const string EXPECTED_ALT_IMAGE = "iPhone 6";
         //
         public IWebElement BannerIPhone
-            { get { return driver.FindElement(By.XPath("//img[contains(@src,'banners/iPhone6')]")); } }
+            { get { return Search.XPath("//img[contains(@src,'banners/iPhone6')]"); } }
 
-        public HomePage(IWebDriver driver) : base(driver)
+        //public HomePage(IWebDriver driver) : base(driver)
+        public HomePage() : base()
         {
             InitProductComponents(By.CssSelector(PRODUCT_BASE_ELEMENT_CSS));
         }
@@ -62,13 +63,15 @@ namespace lv317.Pages.Users
         public HomePage ChooseCurrencyByPartialName(string currencyName)
         {
             ClickCurrencyByPartialName(currencyName);
-            return new HomePage(driver);
+            //return new HomePage(driver);
+            return new HomePage();
         }
 
         public new SuccesSearchPage SuccesSearchProduct(string partialProductName)
         {
             base.SuccesSearchProduct(partialProductName);
-            return new SuccesSearchPage(driver);
+            //return new SuccesSearchPage(driver);
+            return new SuccesSearchPage();
         }
 
     }

@@ -58,8 +58,8 @@ namespace lv317
         // DataProvider
         private static readonly object[] ProductItems =
         {
-            new object[] { ProductRepository.AppleIPhone() },
-            new object[] { ProductRepository.MacBook() },
+            //new object[] { ProductRepository.AppleIPhone() },
+            //new object[] { ProductRepository.MacBook() },
             new object[] { ProductRepository.MacBookAir() }
         };
 

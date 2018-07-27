@@ -19,7 +19,7 @@ namespace lv317.Pages
         public ApplicationSource ApplicationSource { get; private set; }
         //public FlexAssert FlexAssert { get; private set; }
         public BrowserWrapper Browser { get; private set; }
-        //public ISearch Search { get; private set; }
+        public ISearch Search { get; private set; }
 
         private Application(ApplicationSource applicationSource)
         {
@@ -46,7 +46,7 @@ namespace lv317.Pages
                         instance = new Application(applicationSource);
                         //
                         instance.InitBrowser(applicationSource);
-                        //instance.InitSearch(applicationSource);
+                        instance.InitSearch(applicationSource);
                     }
                 }
             }
@@ -68,16 +68,17 @@ namespace lv317.Pages
             this.Browser = new BrowserWrapper(applicationSource);
         }
 
-        //private void InitSearch(ApplicationSource applicationSource)
-        //{
-        //    this.Search = new SearchElement(applicationSource);
-        //}
+        private void InitSearch(ApplicationSource applicationSource)
+        {
+            this.Search = new SearchElement(applicationSource);
+        }
 
         public HomePage LoadHomePage()
         {
             //log.Debug("Start LoadHomeActions()");
             Browser.OpenUrl(ApplicationSource.BaseUrl);
-            return new HomePage(Browser.Driver);
+            //return new HomePage(Browser.Driver);
+            return new HomePage();
         }
 
         //public LogoutPage LogoutAction()

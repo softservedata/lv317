@@ -87,9 +87,14 @@
     <Compile Include="SearchTest.cs" />
     <Compile Include="SeleniumFirst.cs" />
     <Compile Include="SeleniumSecond.cs" />
+    <Compile Include="Tools\ASearch.cs" />
     <Compile Include="Tools\BrowserWrapper.cs" />
+    <Compile Include="Tools\ISearch.cs" />
     <Compile Include="Tools\RegexUtils.cs" />
     <Compile Include="Pages\TestRunner.cs" />
+    <Compile Include="Tools\SearchElement.cs" />
+    <Compile Include="Tools\SearchExplicit.cs" />
+    <Compile Include="Tools\SearchImplicit.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WishWsh.cs" />

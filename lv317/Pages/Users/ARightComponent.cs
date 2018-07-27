@@ -13,12 +13,14 @@ namespace lv317.Pages.Users
     {
         //public ICollection<IWebElement> RightCategories { get; private set; }
         public IWebElement MyAccountLink
-            { get { return driver.FindElement(By.XPath("//div/a[contains(@href,'route=account/account')]")); } }
+            { get { return Search.XPath("//div/a[contains(@href,'route=account/account')]"); } }
         public IWebElement EditAccountLink
-            { get { return driver.FindElement(By.XPath("//div/a[contains(@href,'route=account/edit')]")); } }
+            { get { return Search.XPath("//div/a[contains(@href,'route=account/edit')]"); } }
         public IWebElement LogoutLink
-            { get { return driver.FindElement(By.XPath("//div/a[contains(@href,'route=account/logout')]")); } }
-        public ARightComponent(IWebDriver driver) : base(driver) { }
+            { get { return Search.XPath("//div/a[contains(@href,'route=account/logout')]"); } }
+
+        //public ARightComponent(IWebDriver driver) : base(driver) { }
+        public ARightComponent() : base() { }
 
         // MyAccountLink
         public string GetMyAccountLinkText()

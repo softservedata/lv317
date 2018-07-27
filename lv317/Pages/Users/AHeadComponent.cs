@@ -13,33 +13,37 @@ namespace lv317.Pages.Users
 
     public class DropdownOptions
     {
-        //protected ISearch Search { get; private set; }
-        protected IWebDriver driver;
+        protected ISearch Search { get; private set; }
+        //protected IWebDriver driver;
         //
         public ICollection<IWebElement> ListOptions { get; private set; }
 
-        private DropdownOptions(IWebDriver driver)
+        //private DropdownOptions(IWebDriver driver)
+        private DropdownOptions()
         {
-            this.driver = driver;
+            Search = Application.Get().Search;
+            //this.driver = driver;
             //this.Search = Application.Get().Search;
         }
 
-        public DropdownOptions(IWebDriver driver, By searchLocator) : this(driver)
+        //public DropdownOptions(IWebDriver driver, By searchLocator) : this(driver)
+        public DropdownOptions(By searchLocator) : this()
         {
             InitListOptions(searchLocator);
         }
 
-        public DropdownOptions(IWebDriver driver, By searchLocator, By lastLocator) : this(driver)
+        //public DropdownOptions(IWebDriver driver, By searchLocator, By lastLocator) : this(driver)
+        public DropdownOptions(By searchLocator, By lastLocator) : this()
         {
             InitListOptions(searchLocator);
-            ListOptions.Add(driver.FindElement(lastLocator));
-            //ListOptions.Add(Search.GetWebElement(lastLocator));
+            //ListOptions.Add(driver.FindElement(lastLocator));
+            ListOptions.Add(Search.GetWebElement(lastLocator));
         }
 
         private void InitListOptions(By searchLocator)
         {
-            ListOptions = driver.FindElements(searchLocator);
-            //ListOptions = Search.GetWebElements(searchLocator);
+            //ListOptions = driver.FindElements(searchLocator);
+            ListOptions = Search.GetWebElements(searchLocator);
         }
 
         public IWebElement GetDropdownOptionByPartialName(string optionName)
@@ -79,26 +83,28 @@ namespace lv317.Pages.Users
     {
         public static bool IsLoggedin { get; set; } = false;
 
-        //private ISearch Search { get; set; }
-        protected IWebDriver driver;
+        private ISearch Search { get; set; }
+        //protected IWebDriver driver;
         //
         public IWebElement Register
-            { get { return driver.FindElement(By.XPath("//a[contains(@href,'route=account/register')]")); } }
+            { get { return Search.XPath("//a[contains(@href,'route=account/register')]"); } }
         public IWebElement Login
-            { get { return driver.FindElement(By.XPath("//a[contains(@href,'route=account/login')]")); } }
+            { get { return Search.XPath("//a[contains(@href,'route=account/login')]"); } }
         public IWebElement MyAccount
-            { get { return driver.FindElement(By.XPath("//a[contains(@href,'route=account/account')]")); } }
+            { get { return Search.XPath("//a[contains(@href,'route=account/account')]"); } }
         public IWebElement Logout
-            { get { return driver.FindElement(By.XPath("//a[contains(@href,'route=account/logout')]")); } }
+            { get { return Search.XPath("//a[contains(@href,'route=account/logout')]"); } }
 
         //static MyAccountOptions()
         //{
         //    IsLoggedin = false;
         //}
 
-        public MyAccountOptions(IWebDriver driver)
+        //public MyAccountOptions(IWebDriver driver)
+        public MyAccountOptions()
         {
-            this.driver = driver;
+            Search = Application.Get().Search;
+            //this.driver = driver;
             //this.Search = Application.Get().Search;
         }
 
@@ -161,40 +167,52 @@ namespace lv317.Pages.Users
         public const string CURRENCY_SELECT_CSS = "button.currency-select.btn.btn-link.btn-block";
 
         //
-        //protected ISearch Search { get; private set; }
-        protected IWebDriver driver;
+        protected ISearch Search { get; private set; }
+        //protected IWebDriver driver;
         //
         public IWebElement Currency
-            { get { return driver.FindElement(By.CssSelector(".btn.btn-link.dropdown-toggle")); } }
+            { get { return Search.CssSelector(".btn.btn-link.dropdown-toggle"); } }
+            //{ get { return driver.FindElement(By.CssSelector(".btn.btn-link.dropdown-toggle")); } }
         public IWebElement MyAccount
-            { get { return driver.FindElement(By.CssSelector(".list-inline > li > a.dropdown-toggle")); } }
+            { get { return Search.CssSelector(".list-inline > li > a.dropdown-toggle"); } }
+            //{ get { return driver.FindElement(By.CssSelector(".list-inline > li > a.dropdown-toggle")); } }
         public IWebElement WishList
-            { get { return driver.FindElement(By.Id("wishlist-total")); } }
+            { get { return Search.Id("wishlist-total"); } }
+            //{ get { return driver.FindElement(By.Id("wishlist-total")); } }
         public IWebElement ShoppingCart
-            { get { return driver.FindElement(By.CssSelector("a[title='Shopping Cart']")); } }
+            { get { return Search.CssSelector("a[title='Shopping Cart']"); } }
+            //{ get { return driver.FindElement(By.CssSelector("a[title='Shopping Cart']")); } }
         public IWebElement Checkout
-            { get { return driver.FindElement(By.CssSelector("a[title='Checkout']")); } }
+            { get { return Search.CssSelector("a[title='Checkout']"); } }
+            //{ get { return driver.FindElement(By.CssSelector("a[title='Checkout']")); } }
         public IWebElement Logo
-            { get { return driver.FindElement(By.CssSelector("#logo > a")); } }
+            { get { return Search.CssSelector("#logo > a"); } }
+            //{ get { return driver.FindElement(By.CssSelector("#logo > a")); } }
         public IWebElement SearchProductField
-            { get { return driver.FindElement(By.Name("search")); } }
+            { get { return Search.Name("search"); } }
+            //{ get { return driver.FindElement(By.Name("search")); } }
         public IWebElement SearchProductButton
-            { get { return driver.FindElement(By.CssSelector(".btn.btn-default.btn-lg")); } }
+            { get { return Search.CssSelector(".btn.btn-default.btn-lg"); } }
+            //{ get { return driver.FindElement(By.CssSelector(".btn.btn-default.btn-lg")); } }
         public IWebElement Cart
-            { get { return driver.FindElement(By.CssSelector("#cart > button")); } }
+            { get { return Search.CssSelector("#cart > button"); } }
+            //{ get { return driver.FindElement(By.CssSelector("#cart > button")); } }
         public ICollection<IWebElement> MenuTop
-            { get { return driver.FindElements(By.CssSelector("ul.nav.navbar-nav > li")); } }
-        //
-        // Create dropdownOptions class if Top Menu Click and Window Opened
+            { get { return Search.CssSelectors("ul.nav.navbar-nav > li"); } }
+            //{ get { return driver.FindElements(By.CssSelector("ul.nav.navbar-nav > li")); } }
+            //
+            // Create dropdownOptions class if Top Menu Click and Window Opened
         private DropdownOptions dropdownOptions;
         private DropdownOptions currencyOptions;
         //protected List<ProductComponent> ProductComponents { get; private set; }
         public MyAccountOptions MyAccountOption { get; private set; }
         //private DropdownCart DropdownCart;
 
-        public AHeadComponent(IWebDriver driver)
+        //public AHeadComponent(IWebDriver driver)
+        public AHeadComponent()
         {
-            this.driver = driver;
+            this.Search = Application.Get().Search;
+            //this.driver = driver;
             //currency = driver.FindElement(By.CssSelector(".btn.btn-link.dropdown-toggle"));
             //
             VerifyWebElements();
@@ -390,11 +408,11 @@ namespace lv317.Pages.Users
         {
             if (lastLocator == null)
             {
-                dropdownOptions = new DropdownOptions(driver, searchLocator);
+                dropdownOptions = new DropdownOptions(searchLocator);
             }
             else
             {
-                dropdownOptions = new DropdownOptions(driver, searchLocator, lastLocator);
+                dropdownOptions = new DropdownOptions(searchLocator, lastLocator);
             }
         }
 
@@ -420,8 +438,8 @@ namespace lv317.Pages.Users
         public List<string> GetSubMenuTopByPartialName(string categoryName)
         {
             ClickMenuTopByCategoryPartialName(categoryName);
-            dropdownOptions = new DropdownOptions(driver,
-                    By.XPath(String.Format(MENUTOP_OPTIONS_XPATH, categoryName)));
+            dropdownOptions = new DropdownOptions(By
+                    .XPath(String.Format(MENUTOP_OPTIONS_XPATH, categoryName)));
             return dropdownOptions.GetListOptions();
         }
 
@@ -438,7 +456,7 @@ namespace lv317.Pages.Users
         {
             ClickSearchProductField();
             ClickCurrency();
-            currencyOptions = new DropdownOptions(driver, By.CssSelector(CURRENCY_SELECT_CSS));
+            currencyOptions = new DropdownOptions(By.CssSelector(CURRENCY_SELECT_CSS));
         }
 
         public IWebElement GetCurrencyByPartialName(string currencyName)
@@ -479,7 +497,8 @@ namespace lv317.Pages.Users
             ClickSearchProductField();
             ClickMyAccount();
             //
-            MyAccountOption = new MyAccountOptions(driver);
+            //MyAccountOption = new MyAccountOptions(driver);
+            MyAccountOption = new MyAccountOptions();
             MyAccountOption.ClickRegister();
         }
 
@@ -494,7 +513,7 @@ namespace lv317.Pages.Users
             ClickSearchProductField();
             ClickMyAccount();
             //
-            MyAccountOption = new MyAccountOptions(driver);
+            MyAccountOption = new MyAccountOptions();
             // if MyAccountOptions.isLogined()
             MyAccountOption.ClickLogin();
             // TODO Modify +++
@@ -507,7 +526,7 @@ namespace lv317.Pages.Users
             ClickSearchProductField();
             ClickMyAccount();
             //
-            MyAccountOption = new MyAccountOptions(driver);
+            MyAccountOption = new MyAccountOptions();
             // if MyAccountOptions.isLogined()
             MyAccountOption.ClickMyAccount();
         }
@@ -522,7 +541,7 @@ namespace lv317.Pages.Users
             ClickSearchProductField();
             ClickMyAccount();
             //
-            MyAccountOption = new MyAccountOptions(driver);
+            MyAccountOption = new MyAccountOptions();
             // if MyAccountOptions.isLogined()
             MyAccountOption.ClickLogout();
             MyAccountOptions.IsLoggedin = false;

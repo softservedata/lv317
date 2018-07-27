@@ -13,7 +13,8 @@ namespace lv317.Pages.Users
     {
         public ICollection<IWebElement> LeftCategories { get; private set; }
 
-        public ALeftComponent(IWebDriver driver) : base(driver) { }
+        //public ALeftComponent(IWebDriver driver) : base(driver) { }
+        public ALeftComponent() : base() { }
 
     }
 

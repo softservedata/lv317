@@ -15,15 +15,16 @@ namespace lv317.Pages.Users
         //
         protected List<ProductComponent> ProductComponents { get; private set; }
 
-        public AHeadProduct(IWebDriver driver) : base(driver)
+        //public AHeadProduct(IWebDriver driver) : base(driver)
+        public AHeadProduct() : base()
         {
         }
 
         protected void InitProductComponents(By searchLocator)
         {
             ProductComponents = new List<ProductComponent>();
-            //ICollection<IWebElement> productWebElements = Search.GetWebElements(searchLocator);
-            ICollection<IWebElement> productWebElements = driver.FindElements(searchLocator);
+            ICollection<IWebElement> productWebElements = Search.GetWebElements(searchLocator);
+            //ICollection<IWebElement> productWebElements = driver.FindElements(searchLocator);
             foreach (IWebElement current in productWebElements)
             {
                 ProductComponents.Add(new ProductComponent(current));

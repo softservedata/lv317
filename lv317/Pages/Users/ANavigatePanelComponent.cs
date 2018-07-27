@@ -14,7 +14,8 @@ namespace lv317.Pages.Users
         // TODO Init PathElements
         public ICollection<IWebElement> PathElements { get; private set; }
 
-        public ANavigatePanelComponent(IWebDriver driver) : base(driver) { }
+        //public ANavigatePanelComponent(IWebDriver driver) : base(driver) { }
+        public ANavigatePanelComponent() : base() { }
     }
 
     // TODO
