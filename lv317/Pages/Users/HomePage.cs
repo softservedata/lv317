@@ -19,7 +19,7 @@ namespace lv317.Pages.Users
         //public HomePage(IWebDriver driver) : base(driver)
         public HomePage() : base()
         {
-            InitProductComponents(By.CssSelector(PRODUCT_BASE_ELEMENT_CSS));
+            //InitProductComponents(By.CssSelector(PRODUCT_BASE_ELEMENT_CSS));
         }
 
         //BannerIPhone

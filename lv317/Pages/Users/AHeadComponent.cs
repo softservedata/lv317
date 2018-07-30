@@ -547,5 +547,12 @@ namespace lv317.Pages.Users
             MyAccountOptions.IsLoggedin = false;
         }
 
+        // Business Logic
+        public LoginPage OpenLoginPage()
+        {
+            GotoLogin();
+            return new LoginPage();
+        }
+
     }
 }

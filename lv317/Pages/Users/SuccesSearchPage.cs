@@ -9,45 +9,49 @@ using OpenQA.Selenium.Interactions;
 
 namespace lv317.Pages.Users
 {
-    public class SuccesSearchPage : ANavigatePanelComponent
+    public class SuccesSearchPage : SearchPage
     {
-        // TODO Add Search Criteria
+
+        protected ProductsListComponent productsListComponent { get; private set; }
 
         //public SuccesSearchPage(IWebDriver driver) : base(driver)
         public SuccesSearchPage() : base()
         {
-            InitProductComponents(By.CssSelector(PRODUCT_BASE_ELEMENT_CSS));
+            productsListComponent = new ProductsListComponent();
+            //productsListComponent = new ProductsListComponent(By.CssSelector(AHeadProduct.PRODUCT_BASE_ELEMENT_CSS));
+            //InitProductComponents(By.CssSelector(PRODUCT_BASE_ELEMENT_CSS));
         }
 
-        public new string GetProductDescriptionByProductName(string productName)
+        public string GetProductDescriptionByProductName(string productName)
         {
-            return base.GetProductDescriptionByProductName(productName);
+            //return base.GetProductDescriptionByProductName(productName);
+            return productsListComponent.GetProductDescriptionByProductName(productName);
         }
 
-        public new List<string> GetProductComponentTexts()
+        public List<string> GetProductComponentTexts()
         {
-            return base.GetProductComponentTexts();
+            return productsListComponent.GetProductComponentTexts();
         }
 
-        public new string GetPriceTextByProductName(string productName)
+        public string GetPriceTextByProductName(string productName)
         {
-            return base.GetPriceTextByProductName(productName);
+            return productsListComponent.GetPriceTextByProductName(productName);
         }
 
-        public new double GetPriceAmountByProductName(string productName)
+        public double GetPriceAmountByProductName(string productName)
         {
             //Console.WriteLine("public new double GetPriceAmountByProductName(string productName) productName = " + productName);
-            return base.GetPriceAmountByProductName(productName);
+            return productsListComponent.GetPriceAmountByProductName(productName);
         }
 
-        public new void ClickAddToCartByProductName(string productName)
+        public void ClickAddToCartByProductName(string productName)
         {
-            base.ClickAddToCartByProductName(productName);
+            productsListComponent.ClickAddToCartByProductName(productName);
         }
 
-        public new void ClickAddToWishByProductName(string productName)
+        public void ClickAddToWishByProductName(string productName)
         {
-            base.ClickAddToWishByProductName(productName);
+            productsListComponent.ClickAddToWishByProductName(productName);
         }
 
         // Business Logic

@@ -9,15 +9,17 @@ using OpenQA.Selenium.Interactions;
 
 namespace lv317.Pages.Users
 {
-    public abstract class ALeftComponent : ANavigatePanelComponent
+    public class ProductsListComponent : AHeadProduct
     {
-        public ICollection<IWebElement> LeftCategories { get; private set; }
+        // TODO List/Grid, SortBy, Show, Pagination
 
-        //public ALeftComponent(IWebDriver driver) : base(driver) { }
-        public ALeftComponent() : base()
+        public ProductsListComponent() : base()
+        {
+        }
+
+        public ProductsListComponent(By searchLocator) : base(searchLocator)
         {
         }
 
     }
-
 }

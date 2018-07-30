@@ -9,7 +9,7 @@ using OpenQA.Selenium.Interactions;
 
 namespace lv317.Pages.Users
 {
-    public abstract class ANavigatePanelComponent : AHeadProduct
+    public abstract class ANavigatePanelComponent : AHeadComponent
     {
         // TODO Init PathElements
         public ICollection<IWebElement> PathElements { get; private set; }

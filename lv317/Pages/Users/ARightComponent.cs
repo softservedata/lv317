@@ -9,6 +9,7 @@ using OpenQA.Selenium.Interactions;
 
 namespace lv317.Pages.Users
 {
+    // for Logged user (TODO Remove)
     public abstract class ARightComponent : ANavigatePanelComponent
     {
         //public ICollection<IWebElement> RightCategories { get; private set; }

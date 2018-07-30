@@ -9,15 +9,13 @@ using OpenQA.Selenium.Interactions;
 
 namespace lv317.Pages.Users
 {
-    public abstract class ALeftComponent : ANavigatePanelComponent
+    public abstract class ARightCommonComponent : ANavigatePanelComponent
     {
-        public ICollection<IWebElement> LeftCategories { get; private set; }
+        // TODO My Account, Address Book, Wish List, Order History, Downloads, Recurring payments, Reward Points, Returns, Transactions, Newsletter
 
-        //public ALeftComponent(IWebDriver driver) : base(driver) { }
-        public ALeftComponent() : base()
+        public ARightCommonComponent() : base()
         {
         }
 
     }
-
 }

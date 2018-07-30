@@ -15,12 +15,19 @@ namespace lv317.Pages.Users
         //
         protected List<ProductComponent> ProductComponents { get; private set; }
 
-        //public AHeadProduct(IWebDriver driver) : base(driver)
         public AHeadProduct() : base()
         {
+            InitProductComponents(By.CssSelector(PRODUCT_BASE_ELEMENT_CSS));
         }
 
-        protected void InitProductComponents(By searchLocator)
+        //public AHeadProduct(IWebDriver driver) : base(driver)
+        public AHeadProduct(By searchLocator) : base()
+        {
+            InitProductComponents(searchLocator);
+        }
+
+        //protected void InitProductComponents(By searchLocator)
+        private void InitProductComponents(By searchLocator)
         {
             ProductComponents = new List<ProductComponent>();
             ICollection<IWebElement> productWebElements = Search.GetWebElements(searchLocator);
@@ -32,7 +39,7 @@ namespace lv317.Pages.Users
         }
 
         // ProductComponents
-        protected ProductComponent GetProductComponentByProductName(string productName)
+        public ProductComponent GetProductComponentByProductName(string productName)
         {
             //Console.WriteLine("ProductComponents.Count = " + ProductComponents.Count + "  productName = " + productName);
             ProductComponent result = null;
@@ -55,12 +62,13 @@ namespace lv317.Pages.Users
             return result;
         }
 
-        protected string GetProductDescriptionByProductName(string productName)
+        //protected string GetProductDescriptionByProductName(string productName)
+        public string GetProductDescriptionByProductName(string productName)
         {
             return GetProductComponentByProductName(productName).GetDescriptionText();
         }
 
-        protected List<string> GetProductComponentTexts()
+        public List<string> GetProductComponentTexts()
         {
             List<string> result = new List<string>();
             foreach (ProductComponent current in ProductComponents)
@@ -70,23 +78,23 @@ namespace lv317.Pages.Users
             return result;
         }
 
-        protected string GetPriceTextByProductName(string productName)
+        public string GetPriceTextByProductName(string productName)
         {
             return GetProductComponentByProductName(productName).GetPriceText();
         }
 
-        protected double GetPriceAmountByProductName(string productName)
+        public double GetPriceAmountByProductName(string productName)
         {
             //Console.WriteLine("public new double GetPriceAmountByProductName(string productName) productName = " + productName);
             return GetProductComponentByProductName(productName).GetPriceAmount();
         }
 
-        protected void ClickAddToCartByProductName(string productName)
+        public void ClickAddToCartByProductName(string productName)
         {
             GetProductComponentByProductName(productName).ClickAddToCart();
         }
 
-        protected void ClickAddToWishByProductName(string productName)
+        public void ClickAddToWishByProductName(string productName)
         {
             GetProductComponentByProductName(productName).ClickAddToWish();
         }

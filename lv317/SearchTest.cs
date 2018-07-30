@@ -16,6 +16,7 @@ using lv317.Tools;
 using lv317.Pages;
 using lv317.Pages.Users;
 using lv317.Data.Products;
+using lv317.Data.Users;
 
 namespace lv317
 {
@@ -63,7 +64,7 @@ namespace lv317
             new object[] { ProductRepository.MacBookAir() }
         };
 
-        [Test, TestCaseSource(nameof(ProductItems))]
+        //[Test, TestCaseSource(nameof(ProductItems))]
         public void SearchItem1(Product product)
         //public void SearchItem1(string itemName, string description)
         {
@@ -83,6 +84,28 @@ namespace lv317
             //
             isTestSuccess = true;
         }
+
+        // DataProvider
+        private static readonly object[] ValidUsers =
+        {
+            new object[] {UserRepository.Get().Registered() }
+        };
+
+        [Test, TestCaseSource(nameof(ValidUsers))]
+        public void LoginUser1(IUser validUser)
+        {
+            // Steps
+            MyAccountPage myAccountPage = Pages.Application.Get().LoadHomePage()
+                    .OpenLoginPage()
+                    .SuccessfulLogin(validUser);
+            // Check
+            //Assert.True(succesSearchPage
+            //        .GetProductDescriptionByProductName(product.Name)
+            //        .Contains(product.Description));
+            //
+            isTestSuccess = true;
+        }
+
 
     }
 
