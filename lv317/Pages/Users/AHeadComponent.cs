@@ -127,6 +127,7 @@ namespace lv317.Pages.Users
 
         public void ClickLogin()
         {
+            //ClickMyAccount();
             Login.Click();
         }
 
@@ -506,10 +507,10 @@ namespace lv317.Pages.Users
         public void GotoLogin()
         {
             // TODO +++
-            if (MyAccountOptions.IsLoggedin)
-            {
-                throw new Exception("You Must be Logout");
-            }
+            //if (MyAccountOptions.IsLoggedin)
+            //{
+            //    throw new Exception("You Must be Logout");
+            //}
             ClickSearchProductField();
             ClickMyAccount();
             //

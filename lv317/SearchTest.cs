@@ -91,7 +91,7 @@ namespace lv317
             new object[] {UserRepository.Get().Registered() }
         };
 
-        [Test, TestCaseSource(nameof(ValidUsers))]
+        //[Test, TestCaseSource(nameof(ValidUsers))]
         public void LoginUser1(IUser validUser)
         {
             // Steps
@@ -106,6 +106,35 @@ namespace lv317
             isTestSuccess = true;
         }
 
+        // DataProvider
+        private static readonly object[] ValidUserProduct =
+        {
+            new object[] { UserRepository.Get().Registered(), ProductRepository.MacBookAir() }
+        };
+
+        [Test, TestCaseSource(nameof(ValidUserProduct))]
+        public void WishList1NotEmpty(IUser validUser, Product product)
+        {
+            // Precondition
+            List<string> products = new List<string>();
+            products.Add(product.Name);
+            // Steps
+            WishListPage wishListPage = Pages.Application.Get().LoadHomePage()
+                .SuccesSearchProduct(product.Name)
+                .ClickAddToWishByProductName(product.Name)
+                .OpenLoginPage()
+                .SuccessfulLogin(validUser)
+                .GotoWishListPage(products);
+            // Check
+            Assert.False(wishListPage.isWishListEmpty());
+            //
+            // Return to Previous State.
+            wishListPage
+                .ClickRemoveWishByProductName(product.Name)
+                .GotoLogout();
+            //
+            isTestSuccess = true;
+        }
 
     }
 

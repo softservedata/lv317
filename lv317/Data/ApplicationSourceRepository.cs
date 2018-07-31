@@ -25,7 +25,7 @@ namespace lv317.Data
 
         public static ApplicationSource ChromeEpizy()
         {
-            return new ApplicationSource("ChromeTemporaryWhithUI", 10L,
+            return new ApplicationSource("ChromeTemporaryWhithUI", 20L,
                 "http://atqc-shop.epizy.com",
                 "http://atqc-shop.epizy.com/index.php?route=account/logout",
                 "http://atqc-shop.epizy.com/admin/");

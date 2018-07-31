@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using lv317.Data.Users;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
@@ -34,10 +35,25 @@ namespace lv317.Pages.Users
         }
 
         // Business Logic
+        private void LoginUserFromRightPannel(IUser validUser)
+        {
+            //LoginPage loginPage = new LoginPage();
+            //loginPage.SetLoginData(validUser);
+            new LoginPage().SetLoginData(validUser);
+        }
+
         public LoginPage GotoLoginPage()
         {
             ClickLoginLink();
             return new LoginPage();
+        }
+
+        // TODO My Account, Address Book, Wish List, Order History, Downloads, Recurring payments, Reward Points, Returns, Transactions, Newsletter
+        public WishListPage GotoWishListPage(IUser validUser)
+        {
+            ClickWishListLink();
+            LoginUserFromRightPannel(validUser);
+            return new WishListPage();
         }
 
     }

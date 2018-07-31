@@ -92,6 +92,9 @@
     <Compile Include="Pages\Users\RegisterPage.cs" />
     <Compile Include="Pages\Users\SearchPage.cs" />
     <Compile Include="Pages\Users\SuccesSearchPage.cs" />
+    <Compile Include="Pages\Users\WishComponent.cs" />
+    <Compile Include="Pages\Users\WishListComponent.cs" />
+    <Compile Include="Pages\Users\WishListPage.cs" />
     <Compile Include="PromotionTest.cs" />
     <Compile Include="SearchTest.cs" />
     <Compile Include="SeleniumFirst.cs" />

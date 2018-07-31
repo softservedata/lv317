@@ -13,8 +13,22 @@ namespace lv317.Pages.Users
     {
         // TODO My Account, Address Book, Wish List, Order History, Downloads, Recurring payments, Reward Points, Returns, Transactions, Newsletter
 
+        public IWebElement WishListLink
+            { get { return Search.XPath("//div/a[contains(@href,'route=account/wishlist')]"); } }
+
         public ARightCommonComponent() : base()
         {
+        }
+
+        // WishList
+        public string GetWishListLinkText()
+        {
+            return WishListLink.Text;
+        }
+
+        public void ClickWishListLink()
+        {
+            WishListLink.Click();
         }
 
     }

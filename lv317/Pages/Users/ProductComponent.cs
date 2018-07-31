@@ -17,6 +17,7 @@ namespace lv317.Pages.Users
         //
         public IWebElement ProductLayout { get; private set; }
         //
+        // TODO Use Search
         public IWebElement Name
             { get { return ProductLayout.FindElement(By.CssSelector("h4 a")); } }
         public IWebElement Description

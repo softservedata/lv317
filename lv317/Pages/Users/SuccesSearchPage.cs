@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -44,14 +45,20 @@ namespace lv317.Pages.Users
             return productsListComponent.GetPriceAmountByProductName(productName);
         }
 
-        public void ClickAddToCartByProductName(string productName)
+        public SuccesSearchPage ClickAddToCartByProductName(string productName)
         {
             productsListComponent.ClickAddToCartByProductName(productName);
+            //return this;
+            return new SuccesSearchPage();
         }
 
-        public void ClickAddToWishByProductName(string productName)
+        public SuccesSearchPage ClickAddToWishByProductName(string productName)
         {
             productsListComponent.ClickAddToWishByProductName(productName);
+            //return this;
+            // TODO ?????
+            Thread.Sleep(2000);
+            return new SuccesSearchPage();
         }
 
         // Business Logic

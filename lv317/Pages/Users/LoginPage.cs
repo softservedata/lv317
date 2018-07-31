@@ -75,7 +75,7 @@ namespace lv317.Pages.Users
         }
 
         // Business Logic
-        private void SetLoginData(IUser user)
+        public void SetLoginData(IUser user)
         {
             ClickEmailField();
             ClearEmailField();
