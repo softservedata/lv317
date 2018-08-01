@@ -130,7 +130,7 @@ namespace lv317.Tools
             //    + Path.GetDirectoryName(Assembly.GetAssembly(typeof(BrowserWrapper)).CodeBase).Substring(6));
             //MessageBox.Show("Path.GetDirectoryName(Assembly.GetAssembly(typeof(BrowserWrapper)).CodeBase): "
             //    + Path.GetDirectoryName(Assembly.GetAssembly(typeof(BrowserWrapper)).CodeBase),
-            // "Full PATH ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    "Full PATH ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //
             // TODO Create Const for 6
             return Path.GetDirectoryName(Assembly.GetAssembly(typeof(BrowserWrapper)).CodeBase).Substring(6);

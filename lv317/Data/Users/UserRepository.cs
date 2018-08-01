@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lv317.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -73,6 +74,16 @@ namespace lv317.Data.Users
                 .SetCompany("company")
                 .SetAddressAdd("addressAdd")
                 .Build();
+        }
+
+        public IList<IUser> FromCsv(string filename)
+        {
+            return User.GetAllUsers(new CSVReader(filename));
+        }
+
+        public IList<IUser> FromExcel(string filename)
+        {
+            return User.GetAllUsers(new ExcelReader(filename));
         }
 
         public IUser DBUser()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using lv317.Tools;
 
 namespace lv317.Data.Users
 {
@@ -330,6 +331,36 @@ namespace lv317.Data.Users
             return addressAdd;
         }
 
-    }
+        public static IList<IUser> GetAllUsers(IExternalReader externalData)
+        {
+            //logger.Debug("Start GetAllUsers, path = " + path);
+            //IExternalReader externalData = new CSVReader(filename);
+            IList<IUser> users = new List<IUser>();
+            foreach (IList<string> row in externalData.GetAllCells())
+            {
+                if (row[2].ToLower().Equals("email")
+                        && row[9].ToLower().Equals("password"))
+                {
+                    continue;
+                }
+                users.Add(User.Get()
+                        .SetFirstname(row[0])
+                        .SetLastname(row[1])
+                        .SetEmail(row[2])
+                        .SetPhone(row[3])
+                        .SetAddressMain(row[4])
+                        .SetCity(row[5])
+                        .SetPostcode(row[6])
+                        .SetCoutry(row[7])
+                        .SetRegionState(row[8])
+                        .SetPassword(row[9])
+                        .SetSubscribe(row[10].ToLower().Equals("true"))
+                        .Build());
+                //logger.Debug("Add User Firstname= " + row[0] + " Lastname = " + row[1] + " Email = " + row[2]);
+            }
+            //logger.Debug("Done GetAllUsers, path = " + externalData.GetConnection());
+            return users;
+        }
 
+    }
 }

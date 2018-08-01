@@ -89,9 +89,14 @@ namespace lv317
         private static readonly object[] ValidUsers =
         {
             new object[] {UserRepository.Get().Registered() }
-        };
+       };
 
-        //[Test, TestCaseSource(nameof(ValidUsers))]
+        // DataProvider
+        private static readonly object[] ExternalValidUsers =
+            //ListUtils.ToMultiArray(UserRepository.Get().FromCsv("ExistUsers.csv"));
+            ListUtils.ToMultiArray(UserRepository.Get().FromExcel("ExistUsers.xlsx"));
+
+        [Test, TestCaseSource(nameof(ExternalValidUsers))]
         public void LoginUser1(IUser validUser)
         {
             // Steps
@@ -112,7 +117,7 @@ namespace lv317
             new object[] { UserRepository.Get().Registered(), ProductRepository.MacBookAir() }
         };
 
-        [Test, TestCaseSource(nameof(ValidUserProduct))]
+        //[Test, TestCaseSource(nameof(ValidUserProduct))]
         public void WishList1NotEmpty(IUser validUser, Product product)
         {
             // Precondition
