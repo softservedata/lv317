@@ -100,6 +100,11 @@ namespace lv317
         [Test, TestCaseSource("ExternalValidUsers")]
         public void LoginUser1(IUser validUser)
         {
+            string userProfile = System.Environment.GetEnvironmentVariable("USERPROFILE");
+            Console.WriteLine("+++userProfile= " + userProfile);
+            string isJenkins = System.Environment.GetEnvironmentVariable("IS_JENKINS");
+            Console.WriteLine("+++isJenkins= " + isJenkins);
+
             // Steps
             MyAccountPage myAccountPage = Pages.Application.Get().LoadHomePage()
                     .OpenLoginPage()
