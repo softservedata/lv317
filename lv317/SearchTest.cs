@@ -94,9 +94,10 @@ namespace lv317
         // DataProvider
         private static readonly object[] ExternalValidUsers =
             ListUtils.ToMultiArray(UserRepository.Get().FromCsv("ExistUsers.csv"));
-            //ListUtils.ToMultiArray(UserRepository.Get().FromExcel("ExistUsers.xlsx"));
+        //ListUtils.ToMultiArray(UserRepository.Get().FromExcel("ExistUsers.xlsx"));
 
-        [Test, TestCaseSource(nameof(ExternalValidUsers))]
+        //[Test, TestCaseSource(nameof(ExternalValidUsers))]
+        [Test, TestCaseSource("ExternalValidUsers")]
         public void LoginUser1(IUser validUser)
         {
             // Steps
