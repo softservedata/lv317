@@ -104,7 +104,6 @@ namespace lv317
             Console.WriteLine("+++userProfile= " + userProfile);
             string isJenkins = System.Environment.GetEnvironmentVariable("IS_JENKINS");
             Console.WriteLine("+++isJenkins= " + isJenkins);
-
             // Steps
             MyAccountPage myAccountPage = Pages.Application.Get().LoadHomePage()
                     .OpenLoginPage()
