@@ -37,7 +37,7 @@ namespace lv317
             new object[] { "open cart", "many items" }
         };
 
-        [Test, TestCaseSource(nameof(search))]
+        //[Test, TestCaseSource(nameof(search))]
         public void SearchItem(string searchText, string description)
         {
             //Console.WriteLine("Start Test");

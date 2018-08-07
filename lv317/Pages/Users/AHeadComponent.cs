@@ -106,6 +106,7 @@ namespace lv317.Pages.Users
             Search = Application.Get().Search;
             //this.driver = driver;
             //this.Search = Application.Get().Search;
+            Console.WriteLine("+++CONSTRUCTOR: MyAccountOptions()");
         }
 
         // Register
@@ -217,6 +218,7 @@ namespace lv317.Pages.Users
             //currency = driver.FindElement(By.CssSelector(".btn.btn-link.dropdown-toggle"));
             //
             VerifyWebElements();
+            Console.WriteLine("\t+++CONSTRUCTOR: AHeadComponent()");
         }
 
         private void VerifyWebElements()

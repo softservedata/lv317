@@ -38,7 +38,7 @@ namespace lv317
         }
 
         //[TestMethod]
-        [Test]
+        //[Test]
         public void TestMethod1(
             [Values("Hello", "World")]
             string s,
@@ -48,7 +48,7 @@ namespace lv317
             Console.WriteLine("Ok, s=" + s + " x=" + x);
         }
 
-        [TestCase(5, ExpectedResult = true)]
+        //[TestCase(5, ExpectedResult = true)]
         //[TestCase(-15, ExpectedResult = false)]
         public bool TestMethod2(int x)
         {
@@ -65,7 +65,7 @@ namespace lv317
 
         //[TestCase(65, 'A')]
         //[TestCase(97, 'a')]
-        [Test, TestCaseSource(nameof(ConverterData))]
+        //[Test, TestCaseSource(nameof(ConverterData))]
         public void TestMethod3(int x, char c)
         {
             char expexted = c;

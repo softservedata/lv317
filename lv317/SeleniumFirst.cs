@@ -17,7 +17,7 @@ namespace lv317
     {
         private string expected = "Selenium IDE is a Chrome and Firefox plugin which records and plays back user interactions with the browser. Use this to either create simple scripts or assist in exploratory testing.";
 
-        [Test]
+        //[Test]
         public void TheFirstTest()
         {
             IWebDriver driver = new ChromeDriver();

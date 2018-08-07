@@ -21,6 +21,7 @@ namespace lv317
             this.Name = name;
         }
     }
+
     [TestFixture]
     public class WishWish : TestRunnerFirst
     {
@@ -35,7 +36,7 @@ namespace lv317
             new object[] {wishItems}
         };
 
-        [Test, TestCaseSource(nameof(AddWishItems))]
+        //[Test, TestCaseSource(nameof(AddWishItems))]
         public void AddToWishList(List<Item> wishItems)
         {
             driver.FindElement(By.ClassName("dropdown")).Click();

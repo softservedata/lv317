@@ -50,7 +50,7 @@ namespace lv317
             new object[] { CurrencyRepository.USDollar(), ProductRepository.MacBook() },
         };
 
-        [Test, TestCaseSource(nameof(CurrencyProducts))]
+        //[Test, TestCaseSource(nameof(CurrencyProducts))]
         public void CheckChangeCurrency1(string currencyText, Product product)
         {
             // Steps

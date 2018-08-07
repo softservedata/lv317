@@ -86,7 +86,7 @@ namespace lv317
             driver.Quit();
         }
 
-        [Test]
+        //[Test]
         public void CheckSelenium1()
         {
             IWebDriver driver = new ChromeDriver();

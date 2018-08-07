@@ -46,7 +46,7 @@ namespace lv317
             new object[] { orders }
         };
 
-        [Test, TestCaseSource(nameof(Orders))]
+        //[Test, TestCaseSource(nameof(Orders))]
         public void OrderItems(List<Order> orders)
         {
             Actions action;
