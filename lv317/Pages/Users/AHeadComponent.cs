@@ -81,7 +81,8 @@ namespace lv317.Pages.Users
     // TODO Develop Base Class and Children
     public class MyAccountOptions
     {
-        public static bool IsLoggedin { get; set; } = false;
+        //public static bool IsLoggedin { get; set; } = false;
+        public static bool IsLoggedin { get; set; }
 
         private ISearch Search { get; set; }
         //protected IWebDriver driver;
