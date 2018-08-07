@@ -75,6 +75,7 @@ namespace lv317.Tools
     public class BrowserWrapper
     {
         private const string DEFAULT_BROWSER = "DefaultTemporary";
+        private const string JENKINS_BROWSER = "ChromeTemporaryWhithUI";
         //
         // Fields
         private Dictionary<string, IBrowser> Browsers;
@@ -92,21 +93,35 @@ namespace lv317.Tools
             Browsers = new Dictionary<string, IBrowser>();
             Browsers.Add(DEFAULT_BROWSER, new ChromeTemporaryWhithUI());
             Browsers.Add("FirefoxTemporaryWhithUI", new FirefoxTemporaryWhithUI());
-            Browsers.Add("ChromeTemporaryWhithUI", new ChromeTemporaryWhithUI());
+            Browsers.Add(JENKINS_BROWSER, new ChromeTemporaryWhithUI());
             Browsers.Add("ChromeTemporaryMaximizedWhithUI", new ChromeTemporaryMaximizedWhithUI());
             Browsers.Add("ChromeTemporaryWithoutUI", new ChromeTemporaryWithoutUI());
+        }
+
+        private bool IsJenkins()
+        {
+            Console.WriteLine("IS_JENKINS= " + System.Environment.GetEnvironmentVariable("IS_JENKINS"));
+            return System.Environment.GetEnvironmentVariable("IS_JENKINS") == "true";
         }
 
         private void InitWebDriver(ApplicationSource applicationSource)
         {
             IBrowser currentBrowser = Browsers[DEFAULT_BROWSER];
-            foreach (KeyValuePair<string, IBrowser> current in Browsers)
+            if (IsJenkins())
             {
-                if (current.Key.ToString().ToLower()
-                        .Contains(applicationSource.BrowserName.ToLower()))
+                currentBrowser = Browsers[JENKINS_BROWSER];
+                Console.WriteLine("currentBrowser= Browsers[JENKINS_BROWSER]");
+            }
+            else
+            {
+                foreach (KeyValuePair<string, IBrowser> current in Browsers)
                 {
-                    currentBrowser = current.Value;
-                    break;
+                    if (current.Key.ToString().ToLower()
+                            .Contains(applicationSource.BrowserName.ToLower()))
+                    {
+                        currentBrowser = current.Value;
+                        break;
+                    }
                 }
             }
             Driver = currentBrowser.GetBrowser(applicationSource);
